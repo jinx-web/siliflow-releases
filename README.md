@@ -1,102 +1,121 @@
 <div align="center">
 
-# ⚡ Siliflow — Digital Hardware Studio
+<img src="./logo.webp" alt="SiliFlow Logo" width="96" height="96" style="margin-bottom: 16px;" />
 
-### High-performance, modern IDE for Verilog and SystemVerilog design, simulation, and verification.
+# ⚡ SiliFlow — Digital Hardware Studio
 
-[![Release](https://img.shields.io/github/v/release/jinx-web/siliflow-releases?style=for-the-badge&color=007acc)](https://github.com/jinx-web/siliflow-releases/releases/latest)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-blue?style=for-the-badge)](https://github.com/jinx-web/siliflow-releases/releases/latest)
-[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](#)
+### High-performance, modern native desktop IDE for Verilog and SystemVerilog design, simulation, and verification.
+
+[![Release](https://img.shields.io/github/v/release/jinx-web/siliflow-releases?style=for-the-badge&color=5e6ad2)](https://github.com/jinx-web/siliflow-releases/releases/latest)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-08090a?style=for-the-badge)](https://github.com/jinx-web/siliflow-releases/releases/latest)
+[![Website](https://img.shields.io/badge/Website-siliflow.in-27a644?style=for-the-badge)](https://siliflow.in)
 
 <p align="center">
   <a href="#-downloads"><b>Downloads</b></a> •
-  <a href="#-features"><b>Key Features</b></a> •
-  <a href="#-quick-start"><b>Quick Start</b></a> •
+  <a href="#-key-features"><b>Key Features</b></a> •
+  <a href="#-windows-installation-note"><b>Windows Setup</b></a> •
   <a href="#-toolchain-requirements"><b>Toolchain</b></a> •
-  <a href="#-issue-reporting"><b>Report Issues</b></a>
+  <a href="#-issue-reporting"><b>Report Issues</b></a> •
+  <a href="https://siliflow.in"><b>Official Website</b></a>
 </p>
 
 ---
 
 </div>
 
-## 📥 Downloads
+## 📥 Downloads (v1.2.0)
 
-Download the latest version for your operating system from the **[Releases](https://github.com/jinx-web/siliflow-releases/releases/latest)** page:
+Download the latest production release for your platform from the **[Releases](https://github.com/jinx-web/siliflow-releases/releases/latest)** page:
 
-| Operating System | Package Format | Download Link | Notes |
+| Operating System | Package Format | Download Asset | Instructions / Notes |
 |:---|:---|:---|:---|
-| **Windows** (x64) | `.exe` / `.msi` | [**Download Windows Installer**](https://github.com/jinx-web/siliflow-releases/releases/latest) | Windows 10 / 11 (64-bit) |
-| **macOS** (Apple Silicon) | `.dmg` | [**Download macOS (M1/M2/M3/M4)**](https://github.com/jinx-web/siliflow-releases/releases/latest) | macOS 12+ (Apple Silicon) |
-| **Linux** (x64) | `.AppImage` / `.deb` | [**Download Linux Package**](https://github.com/jinx-web/siliflow-releases/releases/latest) | Ubuntu, Debian, Fedora, Arch |
+| **Windows** (x64) | **Installer (.exe)** | [**`Siliflow_1.2.0_x64-setup.exe`**](https://github.com/jinx-web/siliflow-releases/releases/latest) | **Recommended.** Run the setup wizard. Installs `WebView2Loader.dll` automatically. |
+| **Windows** (x64 MSI) | **Enterprise (.msi)** | [**`Siliflow_1.2.0_x64_en-US.msi`**](https://github.com/jinx-web/siliflow-releases/releases/latest) | Windows Installer package with complete dependency bundling. |
+| **macOS** (Apple Silicon) | **Disk Image (.dmg)** | [**`Siliflow_1.2.0_aarch64.dmg`**](https://github.com/jinx-web/siliflow-releases/releases/latest) | Optimized for M1, M2, M3, M4 Apple Silicon Macs. Drag to `/Applications`. |
+| **Linux** (x64 AppImage) | **Portable (.AppImage)** | [**`Siliflow_1.2.0_amd64.AppImage`**](https://github.com/jinx-web/siliflow-releases/releases/latest) | Self-contained. `chmod +x` and run anywhere on Ubuntu, Fedora, Arch, Debian. |
+| **Linux** (Debian / Ubuntu) | **Debian (.deb)** | [**`Siliflow_1.2.0_amd64.deb`**](https://github.com/jinx-web/siliflow-releases/releases/latest) | Install via `sudo dpkg -i Siliflow_1.2.0_amd64.deb`. |
 
 ---
 
-## ✨ Features
+## ⚠️ Windows Installation Note
 
-- **⚡ Smarter Silicon Code Editor**:
-  - Full Verilog & SystemVerilog syntax highlighting with Monaco engine.
-  - **F12 Go to Definition** for modules, wires, registers, and parameters.
-  - Signal and port autocomplete with direction, bitwidth, and line locations.
-  - Hover definition cards and instantaneous code formatting.
+> [!IMPORTANT]
+> If you are on Windows, **always run the setup installer (`Siliflow_1.2.0_x64-setup.exe` or `Siliflow_1.2.0_x64_en-US.msi`)**.
+> 
+> Do **not** run raw unpackaged `siliflow.exe` by itself without its installer, as Windows requires `WebView2Loader.dll` which the installer configures automatically.
 
-- **🌲 Module Hierarchy Visualizer**:
-  - Real-time RTL hierarchy tree explorer showing top-level testbenches and nested submodules.
+---
+
+## ✨ Key Features
+
+- **⚡ Split-Pane RTL Code Editor**:
+  - Full Verilog-2005 and SystemVerilog-2017 syntax highlighting with the Monaco editor engine.
+  - **F12 Go to Definition** for modules, wires, logic, registers, and parameters across your project.
+  - Signal and port autocomplete with direction, bitwidth, and instantiation location.
+  - Fast 350ms debounced live linting merging `iverilog`, `verilator`, and `slang`.
+
+- **🌲 Module Hierarchy & Cross-Probing**:
+  - Real-time RTL hierarchy explorer showing top-level testbenches and nested design submodules.
   - Click any node in the hierarchy tree to jump straight to its instantiation site.
 
 - **🚀 Dual Simulation Engines**:
-  - **Icarus Verilog (`iverilog` + `vvp`)**: Ultra-fast event-driven simulation for rapid functional verification.
-  - **Verilator Engine**: 10x–100x faster cycle-accurate compile-to-C++ simulation with `--timing` support.
-  - One-click simulator switching directly from the top toolbar.
+  - **Icarus Verilog (`iverilog` + `vvp`)**: Event-driven simulation with automated `sv2v` transpilation for rapid functional verification.
+  - **Verilator Engine**: Ultra-fast cycle-accurate compile-to-C++ simulation with `--timing` support.
+  - Configurable watchdog timer (1–120s) and single-click simulator switching directly from the toolbar.
 
-- **📊 Interactive Waveform Viewer**:
-  - Native VCD waveform viewer embedded directly in the studio.
-  - Inspect signal transitions, clock edges, buses, and digital logic states.
+- **📊 Embedded Waveform Analyzer**:
+  - Fast Rust `wellen` waveform viewer embedded directly in the studio (handles traces up to 100 MB).
+  - Inspect `.vcd` and `.fst` dumps with dual cursors (**Cursor A/B**, **ΔT**, and frequency in MHz/GHz).
+  - Instant radix switching between `HEX`, `BIN`, `DEC`, and `OCT`.
 
-- **📈 RTL Schematic Visualizer**:
-  - Automated logic synthesis netlist generation via Yosys.
-  - Interactive gate-level schematic canvas: drag-to-pan, scroll-to-zoom, and center-to-view.
-  - Fullscreen inspection mode (<kbd>Esc</kbd> to exit).
-  - High-res vector **SVG** and 2x **PNG** diagram export.
-  - Click any logic gate to inspect port connections and jump to RTL source.
+- **📈 Yosys Logic Synthesis & FSM State Visualizer**:
+  - One-click gate-level schematic synthesis via Yosys.
+  - Interactive gate-level schematic canvas (`netlistsvg`): drag-to-pan, scroll-to-zoom, and `\src` cross-probing back to RTL lines.
+  - Automatic Finite State Machine (FSM) state extraction with interactive diagrams and Mermaid export.
+  - High-res vector **SVG** and 2x **PNG** schematic exports for papers and reports.
+
+- **⏱️ Static Timing Analysis (STA) & CDC/RDC Signoff**:
+  - Built-in timing analysis supporting `45nm_typical`, `130nm_skywater`, `fpga_lut4`, and custom `.lib` Liberty files.
+  - Inline editor critical-path highlighting and slack metrics (WNS, TNS).
+  - 5-rule structural Clock Domain Crossing & Reset Domain Crossing verification with persistent waivers.
 
 - **🧪 Regression Testbench Suite**:
-  - Discover and execute all testbenches across your project with a single click.
-  - Real-time Pass/Fail status, duration, and exit-code reporting.
+  - Discover and execute all testbenches across your workspace with one click.
+  - Real-time Pass/Fail status, run duration, exit codes, and 20-run history tracker.
 
-- **🔍 Workspace-Wide Search**:
-  - Instant project-wide search (<kbd>Ctrl+Shift+F</kbd>) with Regex and Case Sensitivity.
-
-- **💻 Integrated Silicon Terminal**:
-  - Host shell auto-detection (PowerShell, Command Prompt, Bash, Zsh).
-  - Automatic PATH injection for EDA tools (`iverilog`, `vvp`, `yosys`, `verilator`).
+- **💻 Integrated Silicon Terminal & Git**:
+  - Auto-detected shells (PowerShell, Command Prompt, Bash, Zsh) with automatic PATH injection for EDA tools (`iverilog`, `vvp`, `yosys`, `verilator`).
+  - Native Git commit graph, file diffs, and staging.
 
 ---
 
 ## 🛠️ Toolchain Requirements
 
-Siliflow interfaces with standard open-source hardware toolchains:
+SiliFlow interfaces with standard open-source hardware toolchains (bundled or local):
 
-| Tool | Purpose | Status |
+| Tool | Purpose | Status in Studio |
 |:---|:---|:---|
-| **Icarus Verilog** (`iverilog`, `vvp`) | Simulation engine | Recommended |
-| **Verilator** (`verilator_bin`) | High-speed cycle-accurate simulation | Optional |
-| **Yosys** (`yosys`) | RTL Schematic synthesis & elaboration | Optional |
-| **GTKWave** | Standalone waveform inspection | Optional |
+| **Icarus Verilog** (`iverilog`, `vvp`) | Event-driven simulation | Bundled / Auto-detected |
+| **Verilator** (`verilator_bin`) | Cycle-accurate simulation | Bundled / Auto-detected |
+| **Yosys** (`yosys`) | RTL synthesis & schematic elaboration | Bundled / Auto-detected |
+| **GTKWave** (`gtkwave`) | Standalone waveform inspection | Supported |
+| **sv2v** (`sv2v`) | SystemVerilog to Verilog conversion | Bundled / Auto-managed |
+| **slang** / **Verible** | Syntax parsing & formatting | Supported |
 
-> **Tip:** You can check the detection status of your local EDA tools anytime inside Siliflow by clicking the toolchain pill in the bottom status bar.
+> **Tip:** Check toolchain status anytime inside SiliFlow Studio by clicking the toolchain status pill in the bottom status bar.
 
 ---
 
-## 🐞 Issue Reporting & Feedback
+## 🐞 Issue Reporting & Community
 
-Encountered a bug or have a feature request? Please open an issue in this repository:
-👉 **[Open an Issue](https://github.com/jinx-web/siliflow-releases/issues/new)**
-
-Include your OS version, hardware design snippets, and terminal logs where applicable.
+Encountered an issue or have a feature request?
+- **Bug Reports & Issues:** [Open a GitHub Issue](https://github.com/jinx-web/siliflow-releases/issues/new)
+- **Documentation:** [siliflow.in/docs](https://siliflow.in/docs)
+- **Roadmap:** [siliflow.in/roadmap](https://siliflow.in/roadmap)
+- **Email Contact:** [info@siliflow.in](mailto:info@siliflow.in)
 
 ---
 
 <div align="center">
-<sub>Siliflow is developed by Jignesh Giri. All rights reserved.</sub>
+  <sub>SiliFlow is developed by Jignesh Giri. All rights reserved. • <a href="https://siliflow.in">siliflow.in</a></sub>
 </div>
